@@ -125,3 +125,50 @@ When to Use:
 - Union Types: When a variable can have more than one type, and you want to express that flexibility.
 
 - Intersection Types: When you want an object to have properties from multiple types, creating a new type with the combined properties.
+
+# Generics
+
+- Generics allow you to write reusable and flexible code by creating components that can work with various types.
+
+        // Generic Function
+        function identity<T>(arg: T): T {
+            return arg;
+        }
+        
+        let result = identity<string>("Hello, Generics!");
+        
+        // Generic Interface
+        interface Box<T> {
+            value: T;
+        }
+        
+        let numberBox: Box<number> = { value: 42 };
+        let stringBox: Box<string> = { value: "Hello" };
+
+When to Use:
+
+- When you want to create a flexible and reusable function or component that can work with different data types.
+
+# Type Guards
+
+- Type guards are a way to narrow down the type of a variable within a specific code block, helping TypeScript understand the type more accurately.
+- Use Type Guards when dealing with variables that could have multiple types, and you want to narrow down the type within a specific code block.
+
+        // Type Guard Function
+        function isString(value: any): value is string {
+            return typeof value === "string";
+        }
+        
+        // Using Type Guard
+        let userInput: string | number = "Hello";
+        if (isString(userInput)) {
+            console.log(userInput.toUpperCase());
+        } else {
+            console.log("Not a string");
+        }
+
+When to Use:
+
+When dealing with variables that could have multiple types, and you want to perform specific actions based on the actual type.
+Useful when working with union types.
+
