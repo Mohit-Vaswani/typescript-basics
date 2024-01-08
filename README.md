@@ -88,3 +88,40 @@ A Guide for Beginners Learning Typescript
     
     // Using the type alias
     let distance = calculateDistance({ x: 0, y: 0 }, { x: 3, y: 4 });
+
+
+# Union and Intersection Types
+
+- Union Types: A union type allows a variable to have multiple types. It's like saying the value could be one thing or another.
+
+- Intersection Types: An intersection type combines multiple types into one. It's like saying the value should have properties of all the combined types.
+
+        // Union Type
+        let username: string | number;
+        username = "Alice"; // Valid
+        username = 123;      // Valid
+        // username = true;   // Invalid, as it's not a string or a number
+        
+        // Intersection Type
+        type Car = {
+            brand: string;
+            model: string;
+        };
+        
+        type ElectricCar = {
+            batteryLife: number;
+        };
+        
+        type ElectricCarWithBrand = Car & ElectricCar;
+        
+        let myCar: ElectricCarWithBrand = {
+            brand: "Tesla",
+            model: "Model 3",
+            batteryLife: 300,
+        };
+
+When to Use:
+
+- Union Types: When a variable can have more than one type, and you want to express that flexibility.
+
+- Intersection Types: When you want an object to have properties from multiple types, creating a new type with the combined properties.
